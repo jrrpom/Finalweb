@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Bienestar Personal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Bienestar 360</h1>
+            <p id="bienvenida"></p>
+            <ul>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <button class="button1" onclick="location.href='registro.html'">Registrarse</button>
+                <li><a href="geolocalizacion.html">Actividades Cercanas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+        <section id="hero">
+            <h2>Tu bienestar, nuestra prioridad</h2>
+            <p>Lleva un registro de tus actividades diarias y mejora tu calidad de vida.</p>
+            <button onclick="scrollToSection('#registro')">¡Comienza ahora!</button>
+        </section>
+
+      
+            <section id="beneficios">
+                <h3>Beneficios de un estilo de vida saludable</h3>
+                <div class="beneficios-container">
+                    
+                    <div class="beneficio" id="ejercicio">
+                        <h4>Ejercicio</h4>
+                        <p>Haz clic para saber más.</p>
+                        <div class="detalles">
+                            <ul>
+                                <li>Aumenta tu energía</li>
+                                <li>Reduce el estrés</li>
+                                <li>Mejora la salud cardiovascular</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="beneficio" id="alimentacion">
+                        <h4>Alimentación</h4>
+                        <p>Haz clic para saber más.</p>
+                        <div class="detalles">
+                            <ul>
+                                <li>Equilibra tu organismo</li>
+                                <li>Fortalece el sistema inmune</li>
+                                <li>Mejora la digestión</li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                    <div class="beneficio" id="descanso">
+                        <h4>Descanso</h4>
+                        <p>Haz clic para saber más.</p>
+                        <div class="detalles">
+                            <ul>
+                                <li>Regenera el cuerpo</li>
+                                <li>Incrementa la concentración</li>
+                                <li>Fortalece la memoria</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="registro-actividades">
+                <h2>Registro de Actividades</h2>
+                <div id="bloqueo" style="display: none;">
+                    <p>Por favor, regístrate o inicia sesión para registrar tus actividades.</p>
+                    <button onclick="location.href='registro.html'">Ir al Registro</button>
+                </div>
+            
+                <form id="form-actividades">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de actividad: </label>
+                        <select id="tipo" name="tipo">
+                            <option value="ejercicio">Ejercicio</option>
+                            <option value="dieta">Dieta</option>
+                            <option value="sueño">Sueño</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div id="detalles">
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Registrar Actividad</button>
+                    </div>
+                </form>
+                
+
+            </section>
+            
+
+                        <h3>Actividades Registradas</h3>
+                        <table id="tabla-actividades">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Detalle</th>
+                                    <th>Fecha</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-tabla">
+                             
+                            </tbody>
+                        </table>
+                        
+
+
+            
+
+        
+    </main>
+
+   
+
+
+
+    <footer>
+        <p>&copy; 2024 Bienestar 360. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    if (usuario) {
+       
+        document.getElementById('bienvenida').textContent = '¡Bienvenido, ' + usuario.nombre + '!';
+
+        document.getElementById('form-actividades').style.display = 'block';
+        document.getElementById('bloqueo').style.display = 'none';  
+    } else {
+       
+        document.getElementById('bloqueo').style.display = 'block';
+        document.getElementById('form-actividades').style.display = 'none';  
+    }
+
+   
+    const tipoSelect = document.getElementById('tipo');
+    const detallesDiv = document.getElementById('detalles');
+
+    tipoSelect.addEventListener('change', actualizarFormulario);
+
+    function actualizarFormulario() {
+        const tipo = tipoSelect.value;
+
+        let html = '';
+        if (tipo === 'ejercicio') {
+            html = `
+                <label for="duracion">Duración (minutos):</label>
+                <input type="number" id="duracion" name="duracion" required>
+            `;
+        } else if (tipo === 'dieta') {
+            html = `
+                <label for="alimentos">Alimentos Consumidos:</label>
+                <textarea id="alimentos" name="alimentos" required></textarea>
+            `;
+        } else if (tipo === 'sueño') {
+            html = `
+                <label for="horas">Horas de Sueño:</label>
+                <input type="number" id="horas" name="horas" required>
+            `;
+        }
+
+        detallesDiv.innerHTML = html;
+    }
+
+   
+    actualizarFormulario();
+
+    
+    document.getElementById('form-actividades').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const tipo = tipoSelect.value;
+        const detalle = detallesDiv.querySelector('input, textarea').value;
+
+       
+        if (!detalle) {
+            alert('Por favor, completa los detalles de la actividad.');
+            return;
+        }
+
+        let actividades = JSON.parse(localStorage.getItem('actividades')) || [];
+        actividades.push({ tipo, detalle });
+
+        localStorage.setItem('actividades', JSON.stringify(actividades));
+
+    });
+</script>
+
