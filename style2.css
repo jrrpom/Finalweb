@@ -1,0 +1,130 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4fb452; 
+    padding: 20px 0; 
+    color: white;
+    text-align: center;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 10px 0; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #81a485;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #4fb452;
+}
+
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#registro {
+    text-align: center;
+}
+
+#registro h2 {
+    font-size: 2rem;
+    color: #4fb452;
+}
+
+#registro p {
+    color: #555;
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    font-size: 1rem;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #4fb452;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #81a485;
+}
+
+
+footer {
+    background-color: #81a485;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+
+nav ul li a.boton {
+    background-color: #64cc67;
+}
+
+
+
+nav ul li a.boton:hover {
+    background-color:  #81a485;
+}

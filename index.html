@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Bienestar Personal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Bienestar 360</h1>
+            <p id="bienvenida"></p>
+            <ul>
+                <li><a href="index.html" class="boton">Inicio</a></li>
+<li><a href="registro.html" class="boton">Registrarse</a></li>
+
+<li><a href="#actividades" class="boton">Mis Actividades</a></li>
+
+<li><a href="geolocalizacion.html" class="boton">Lugares Cercanos</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      
+        <section id="hero">
+            <h2>Tu bienestar, nuestra prioridad</h2>
+            <p>Lleva un registro de tus actividades diarias y mejora tu calidad de vida.</p>
+            <button onclick="window.location.href='registro.html'">¡Comienza ahora!</button>
+        </section>
+
+        <section id="beneficios">
+            <h3>Beneficios de un estilo de vida saludable</h3>
+            <div class="beneficios-container">
+                <div class="beneficio" id="ejercicio">
+                    <h4>Ejercicio</h4>
+                    <p>Haz clic para saber más.</p>
+                    <div class="detalles">
+                        <ul>
+                            <li>Aumenta tu energía</li>
+                            <li>Reduce el estrés</li>
+                            <li>Mejora la salud cardiovascular</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="beneficio" id="alimentacion">
+                    <h4>Alimentación</h4>
+                    <p>Haz clic para saber más.</p>
+                    <div class="detalles">
+                        <ul>
+                            <li>Equilibra tu organismo</li>
+                            <li>Fortalece el sistema inmune</li>
+                            <li>Mejora la digestión</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="beneficio" id="descanso">
+                    <h4>Descanso</h4>
+                    <p>Haz clic para saber más.</p>
+                    <div class="detalles">
+                        <ul>
+                            <li>Regenera el cuerpo</li>
+                            <li>Incrementa la concentración</li>
+                            <li>Fortalece la memoria</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+        <section id="registro-actividades">
+            <h2>Registro de Actividades</h2>
+            <div id="bloqueo" style="display: none;">
+                <p>Por favor, regístrate o inicia sesión para registrar tus actividades.</p>
+                <button onclick="location.href='registro.html'">Ir al Registro</button>
+            </div>
+        
+            <form id="form-actividades">
+                <div class="form-group">
+                    <label for="tipo">Tipo de actividad: </label>
+                    <select id="tipo" name="tipo">
+                        <option value="ejercicio">Ejercicio</option>
+                        <option value="dieta">Dieta</option>
+                        <option value="sueño">Sueño</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div id="detalles">
+                      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Registrar Actividad</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="actividades">
+            <h3>Actividades Registradas</h3>
+            <table id="tabla-actividades">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Detalle</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                   
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bienestar 360. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
